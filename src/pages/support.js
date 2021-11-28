@@ -1,9 +1,21 @@
 import * as React from 'react';
+import BugReport from './forms/BugReport';
+import MissingItems from './forms/MissingItems';
 
 function Support() {
   const [formSelectedOption, setFormSelectedOption] = React.useState("") 
   const changeSelectOptionHandler = (event) => {
     setFormSelectedOption(event.target.value);
+  }
+  function formSwitch(param){
+    switch(param){
+      case 'Bug Report':
+        return <BugReport />;
+      case 'Missing Parts':
+        return <MissingItems />;
+      default:
+        return null;
+    }
   }
   return (
     <div className='support'>
@@ -19,7 +31,7 @@ function Support() {
           </div>
         </form>
         <div>
-          { test }
+          { formSwitch(formSelectedOption) }
         </div>
       </div>
 
