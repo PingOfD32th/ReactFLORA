@@ -26,7 +26,8 @@ function Navbar() {
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>
-            {SidebarData.map((item, index) => {
+            {//TODO, loop through checking permissions
+            SidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>

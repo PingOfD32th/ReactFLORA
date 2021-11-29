@@ -80,3 +80,84 @@ body {
     height: 12rem;
   }
 }
+
+/* report page */
+.reportsWrapper {
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+}
+.reportsBox {
+  position: relative;
+  border: 1px solid;
+  width: 80%;
+  min-width: 50rem;
+  height: 6.5rem;
+}
+.orderNumber {
+  float: right;
+}
+.orderDate {
+  width: 6rem;
+  height: 1rem;
+  text-align: center;
+  bottom: 0.25rem;
+  left: -0.5rem;
+  position: absolute;
+}
+.orderPictures {
+  border: 1px solid;
+  width: 40rem;
+  height: 5rem;
+
+}
+.approvals {
+  position: absolute;
+  height: 1.3rem;
+  width: 40rem;
+
+  bottom: 0.05rem;
+  right: 0rem;
+}
+.regApproval {
+  height: 100%;
+  width: 33.33%;
+  float: left;
+}
+.vpApproval {
+  height: 100%;
+  width: 33.33%;
+  float: right;
+}
+.clerkApproval {
+  height: 100%;
+  width: 33.33%;
+  float: right;
+}
+.approvalTag {
+background-color:  #32CA76;
+border-radius: 7px;
+width: 99%;
+color: #FFF;
+text-align: center;
+font-size: 1rem;
+line-height: 1.4rem;
+}
+.waitingTag {
+background-color:  #FEEFB3;
+border-radius: 7px;
+width: 99%;
+color: #FFF;
+text-align: center;
+font-size: 1rem;
+line-height: 1.4rem;
+}
+.deniedTag {
+background-color:  #D8000C;
+border-radius: 7px;
+width: 99%;
+color: #FFF;
+text-align: center;
+font-size: 1rem;
+line-height: 1.4rem;
+}
