@@ -1,4 +1,5 @@
 import React from 'react';
+import { CartProvider } from './context/cartContext';
 import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -11,7 +12,7 @@ import Support from './pages/support'
 
 function App() {
   return (
-    <>
+    <CartProvider>
       <Router>
         <Navbar />
         <Switch>
@@ -23,7 +24,7 @@ function App() {
           <Route path='/support' component={Support} />
         </Switch>
       </Router>
-    </>
+    </CartProvider>
   );
 }
 

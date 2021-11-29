@@ -1,9 +1,30 @@
-.navbar {
-  background-color: #060b26;
-  height: 80px;
+.navbar-wrapper {
   display: flex;
-  justify-content: start;
+  height: 80px;
+  justify-content: space-between;
+  background-color: #060b26;
+}
+
+.navbar {
+  display: flex;
+  padding-right: 30px;
   align-items: center;
+}
+
+.menu-item-count {
+	display: flex;
+	width: 20px;
+	height: 20px;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 26px;
+	right: 33px;
+	font-size: 12px;
+	/* background: #fff; */
+	border-radius: 50%;
+	font-weight: bold;
+	color: #000;
 }
 
 .menu-bars {
@@ -69,4 +90,102 @@
 
 span {
   margin-left: 16px;
+}
+
+.shopping:hover .shopping-item {
+	transform: translateY(0px);
+	opacity: 1;
+	visibility: visible;
+}
+
+.shopping .shopping-item {
+	position: absolute;
+	top: 80px;
+	right: 0;
+	width: 300px;
+	background: #fff;
+	padding: 20px 25px;
+	-webkit-transition: all 0.3s ease 0s;
+	-moz-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+	-webkit-transform: translateY(10px);
+	-moz-transform: translateY(10px);
+	transform: translateY(10px);
+	-webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	opacity: 0;
+	visibility: hidden;
+	z-index: 99;
+}
+
+.shopping .dropdown-cart-header {
+	padding-bottom: 10px;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.shopping .dropdown-cart-header span {
+	text-transform: uppercase;
+	color: #222;
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.shopping-item .bottom {
+	text-align: center;
+}
+
+.shopping-item .total {
+	overflow: hidden;
+	display: block;
+	padding-bottom: 10px;
+}
+
+.shopping-item .total span {
+	text-transform: uppercase;
+	color: #222;
+	font-size: 13px;
+	font-weight: 600;
+	float: left;
+}
+
+.shopping-item .total .total-amount {
+	float: right;
+	font-size: 14px;
+}
+
+.shopping-item .bottom .btn {
+	background: #222;
+	padding: 10px 20px;
+	display: block;
+	color: #fff;
+	margin-top: 10px;
+	border-radius: 0px;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.shopping-list .shopping-list-item {
+	display: flex;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #eceaea;
+}
+
+.shopping-list .shopping-list-item img {
+  width: 50px;
+  margin-right: 10px;
+}
+.shopping-list .shopping-list-item h4 {
+  font-size: 16px;
+}
+.shopping-list .shopping-list-item p {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.shopping-list .shopping-list-item .remove {
+  color: red;
 }
