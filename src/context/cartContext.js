@@ -6,7 +6,7 @@ export const CartProvider = props => {
     const [cart, setCartData] = useState(() => {
         let saved = localStorage.getItem("cart");
         let initialValue = JSON.parse(saved);
-        return initialValue.length != 0 ? initialValue : {
+        return (initialValue && initialValue.length != 0) ? initialValue : {
             item: [],
             total: 0,
             qty: 0
