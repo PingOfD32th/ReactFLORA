@@ -1,54 +1,61 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import firebase from 'firebase/compat/app';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyA18lefkC7Nv6nL0kN1cZBA5WLB4IzM84U",
-  authDomain: "flora-react-bc0ab.firebaseapp.com",
-  projectId: "flora-react-bc0ab",
-  storageBucket: "flora-react-bc0ab.appspot.com",
-  messagingSenderId: "148233572176",
-  appId: "1:148233572176:web:4e4582c79442754bae6655",
-  measurementId: "G-B5BGTJ8YV4"
-};
+    apiKey: "AIzaSyA18lefkC7Nv6nL0kN1cZBA5WLB4IzM84U",
+    authDomain: "flora-react-bc0ab.firebaseapp.com",
+    projectId: "flora-react-bc0ab",
+    storageBucket: "flora-react-bc0ab.appspot.com",
+    messagingSenderId: "148233572176",
+    appId: "1:148233572176:web:4e4582c79442754bae6655",
+    measurementId: "G-B5BGTJ8YV4"
+  };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+class FirebaseService {
+	init(success) {
+		if (firebase.apps.length) {
+			return;
+		}
+		firebase.initializeApp(firebaseConfig);
+		this.analytics = firebase.getAnalytics();
+		this.firestore = firebase.firestore();
+		success(true);
+	}
 
-const products = firebase.firestore().collection('products');
-const orders = firebase.firestore().collection('orders');
-console.log(products)
-console.log(orders)
+    getProducts = () => {
+        if (!firebase.apps.length) {
+			return false;
+		}
+        console.log("called")
+        return new Promise((resolve, reject) => {
+			this.firestore
+                .collection('products')
+                .onSnapshot((querySnapshot) => {
+                    const items = []
+                    querySnapshot.forEach((doc) => {
+                        items.push(doc.data());
+                    })
+                    resolve(items);
+                })
+		});
+    };
 
-module.exports = {
-    getProducts: function() {
-        products.onSnapshot((querySnapshot) => {
-            const items = []
-            querySnapshot.forEach((doc) => {
-                items.push(doc.data());
-            })
-            return items
-        })
-    },
-    addProduct: function() {},
-    getProduct: function() {},
-    editProduct: function() {},
-    deleteProduct: function(){},
+    // example
+	getAllUserData = () => {
+		if (!firebase.apps.length) {
+			return false;
+		}
+		return new Promise((resolve, reject) => {
+			this.db
+				.ref(`users`)
+				.once('value')
+				.then(snapshot => {
+					const users = snapshot.val();
+					resolve(users);
+				});
+		});
+	};
+}
 
-    getOrder: function(){},
-    placeOrder: function(){},
-    editOrder: function(){},
+const instance = new FirebaseService();
 
-    getMessages: function() {},
-
-    isAdmin: function() {
-        return true
-    },
-    isClerk: function() {},
-
-};
+export default instance;

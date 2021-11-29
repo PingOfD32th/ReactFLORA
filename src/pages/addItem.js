@@ -1,4 +1,5 @@
 import * as React from 'react';
+import firebase from '../customModules/firestoreTest1';
 
 function AddItem() {
   const [inputs, setInputs] = React.useState({})
@@ -10,9 +11,7 @@ function AddItem() {
   }
   const handleSubmit = (event) => {
    event.preventDefault();
-   //todo
-   //send form
-   console.log(inputs)
+   firebase.addProduct(inputs)
   }
 
   return (
