@@ -14,6 +14,7 @@ function Checkout() {
   let itemPic, itemName, itemPrice, itemGLCode = null
   return (
     <div className='checkout'>
+      <br />
       <div className='checkoutWrapper'>
       <div className="checkoutCardWrapper">
       {cart.item.map(item => {console.log(item)})}
@@ -26,9 +27,10 @@ function Checkout() {
           />
       ))}
       </div>
+      <br />
       <div className="checkoutFooter right">
         <h2>total order amount: ${cart && cart.total.toFixed(2)}</h2>
-        <h2>Confirm Order request button</h2>
+        <div onClick={e => firebase.placeOrder(cart)}>Confirm Order request</div>
       </div>
       </div>
       

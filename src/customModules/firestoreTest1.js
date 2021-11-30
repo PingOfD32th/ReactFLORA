@@ -31,7 +31,8 @@ const firestore = firebase.initializeApp(firebaseConfig).firestore();
 
 const products = firestore.collection('products');
 const orders = firestore.collection('orders');
-
+const orderCount = firestore.collection('miscData').doc("orderCount")
+let newOrderCount = 0
 class FirebaseService {
     getProducts = () => {
         return new Promise(function(resolve, reject) {
@@ -56,6 +57,15 @@ class FirebaseService {
           });
           
     }
+    getLastOrderNumber = () => {
+        return new Promise(function(resolve,reject) {
+            orderCount.onSnapshot((querySnapshot) =>{
+                let count = querySnapshot.data().count
+                newOrderCount = count
+                resolve(count)
+            })
+        })
+    }
     // getProduct: function() {},
     // editProduct: function() {},
     // deleteProduct: function(){},
@@ -63,8 +73,9 @@ class FirebaseService {
     // getOrder: function(){},
     placeOrder = (data) => {
         orders.add({
-            cartItems: data.cartItems,
-            cartPrice: data.cartPrice,
+            ordernumber: newOrderCount,
+            cartItems: data.item,
+            cartPrice: data.total,
             regionalApproved: false,
             regionalDenied: false,
             vpApproved: false,

@@ -44,7 +44,7 @@ function Navbar() {
             </ul>
           </nav>
           <div className='navbar'>
-            <Link to='#' className='menu-bars shopping' >
+            <Link to='/checkout' className='menu-bars shopping' >
               <FaIcons.FaShoppingCart />
               <span className="menu-item-count">{cart && cart.qty}</span>
               <div className="shopping-item">
@@ -70,6 +70,7 @@ function Navbar() {
                     <span>Total: </span>
                     <span className="total-amount">{cart && cart.total.toFixed(2)}</span>
                   </div>
+                  {console.log(cart)}
                   <Link to='/checkout' className="btn animate" disabled="disabled">Checkout</Link>
                 </div>
             </div>
