@@ -6,6 +6,7 @@ import { SidebarData } from './SidebarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
 import { CartContext } from '../context/cartContext';
+import Checkout from '../pages/checkout'
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -69,7 +70,7 @@ function Navbar() {
                     <span>Total: </span>
                     <span className="total-amount">{cart && cart.total.toFixed(2)}</span>
                   </div>
-                  <Link to="#" className="btn animate" disabled="disabled">Checkout</Link>
+                  <Link to='/Checkout' className="btn animate" disabled="disabled">Checkout</Link>
                 </div>
             </div>
             </Link>

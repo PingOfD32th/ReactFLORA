@@ -73,7 +73,8 @@ class FirebaseService {
             clerkDenied: false,
             regionalNotes: null,
             vpNotes: null,
-            clerkNotes: null
+            clerkNotes: null,
+            poNumber: null,
         })
     }
     // editOrder: function(){},

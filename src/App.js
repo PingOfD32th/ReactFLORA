@@ -9,6 +9,7 @@ import Products from './pages/Products';
 import Messages from './pages/Messages';
 import addItem from './pages/addItem';
 import Support from './pages/support'
+import Checkout from './pages/checkout';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/products' component={Products} />
           <Route path='/addItem' component={addItem} />
           <Route path='/support' component={Support} />
+          <Route path='/Checkout' component={Checkout} />
         </Switch>
       </Router>
     </CartProvider>

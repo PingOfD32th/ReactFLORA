@@ -18,9 +18,6 @@ function Products() {
     <div className="seachbar_wrapper">
         <div className="searchbar">
           <div>
-            {/* {firestoreData.map(({itemName, itemDesc}) => (
-            <p>{itemName, itemDesc}</p>
-          ))} */}
           </div>
         </div>
       </div>
