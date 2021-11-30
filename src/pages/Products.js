@@ -37,7 +37,7 @@ function Products() {
 }
 
 function Card(props) {
-  const [cart, setCart] = useContext(CartContext);
+  const { setCart } = useContext(CartContext);
   return (
     <div className="card">
       <img src={props.img} className="card__img" />

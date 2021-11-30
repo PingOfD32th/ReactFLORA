@@ -10,7 +10,7 @@ import Checkout from '../pages/checkout'
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
-  const [cart, setCart, removeCart] = useContext(CartContext);
+  const { cart, removeCart } = useContext(CartContext);
 
   const showSidebar = () => setSidebar(!sidebar);
 
@@ -70,7 +70,7 @@ function Navbar() {
                     <span>Total: </span>
                     <span className="total-amount">{cart && cart.total.toFixed(2)}</span>
                   </div>
-                  <Link to='/Checkout' className="btn animate" disabled="disabled">Checkout</Link>
+                  <Link to='/checkout' className="btn animate" disabled="disabled">Checkout</Link>
                 </div>
             </div>
             </Link>

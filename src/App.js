@@ -23,7 +23,7 @@ function App() {
           <Route path='/products' component={Products} />
           <Route path='/addItem' component={addItem} />
           <Route path='/support' component={Support} />
-          <Route path='/Checkout' component={Checkout} />
+          <Route path='/checkout' component={Checkout} />
         </Switch>
       </Router>
     </CartProvider>

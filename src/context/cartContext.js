@@ -30,6 +30,38 @@ export const CartProvider = props => {
             localStorage.setItem("cart", JSON.stringify({item: [...cart.item, result], total: parseFloat(cart.total) + parseFloat(data.price), qty: cart.qty + 1}));
         }
     }
+    const setCartPlus = data => {
+        let dataOnCart = [...cart.item];
+        let found = dataOnCart.findIndex(el => el.title === data.title);
+        if(found != -1){
+            let subTotal = 0;
+            dataOnCart[found]['count'] = dataOnCart[found]['count'] + 1;
+            dataOnCart.map(val=>{
+                subTotal += val.count * parseFloat(val.price)
+            });
+            setCartData({item: dataOnCart, total: subTotal, qty: cart.qty + 1});
+            localStorage.setItem("cart", JSON.stringify({item: dataOnCart, total: subTotal, qty: cart.qty + 1}));
+        }
+    }
+    const setCartMinus = data => {
+        let dataOnCart = [...cart.item];
+        let found = dataOnCart.findIndex(el => el.title === data.title);
+        if(found != -1){
+            let subTotal = 0;
+            dataOnCart[found]['count'] = dataOnCart[found]['count'] - 1;
+            dataOnCart.map(val=>{
+                subTotal += val.count * parseFloat(val.price)
+            });
+            if (dataOnCart[found]['count'] == 0) {
+                let newData = dataOnCart.filter((value, index) => value.title != data.title);
+                setCartData({item: newData, total: subTotal, qty: cart.qty - 1});
+                localStorage.setItem("cart", JSON.stringify({item: newData, total: subTotal, qty: cart.qty - 1}));
+            } else {
+                setCartData({item: dataOnCart, total: subTotal, qty: cart.qty - 1});
+                localStorage.setItem("cart", JSON.stringify({item: dataOnCart, total: subTotal, qty: cart.qty - 1}));
+            }
+        }
+    }
     const removeCart = (data, count) => {
         let dataOnCart = [...cart.item];
         let newData = dataOnCart.filter((value, index) => value.title != data);
@@ -41,7 +73,7 @@ export const CartProvider = props => {
         localStorage.setItem("cart", JSON.stringify({item: newData, total: subTotal, qty: cart.qty - count}));
     }
     return (
-        <CartContext.Provider value={[cart, setCart, removeCart]}>
+        <CartContext.Provider value={{cart, setCart, setCartPlus, setCartMinus, removeCart}}>
             {props.children}
         </CartContext.Provider>
     );

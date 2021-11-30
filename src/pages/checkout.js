@@ -3,7 +3,7 @@ import firebase from '../customModules/firestoreTest1';
 import { CartContext } from '../context/cartContext';
 
 function Checkout() {
-  const [cart, setCart] = useContext(CartContext)
+  const { cart } = useContext(CartContext)
   const [inputs, setInputs] = useState({})
   
   const handleSubmit = (event) => {
@@ -37,16 +37,16 @@ function Checkout() {
 }
 
 function Card(props) {
-  const [cart, setCart, removeCart] = useContext(CartContext)
+  const { setCartPlus, setCartMinus } = useContext(CartContext)
   return (
     <div className="checkoutCard">
       <img src={props.img} className="checkoutPicture" />
         <div className="checkoutTitle">{props.title}</div>
         <div className="checkoutItemCount">
         <div class="orderCount">
-                    <div class="minMaxButton left">-</div>
+                    <div class="minMaxButton left" onClick={e => setCartMinus(props)}>-</div>
                     <input type="number" value={props.amount} min="1" class="orderinput" />
-                    <div class="minMaxButton right" onClick={e => setCart(props)}>+</div>
+                    <div class="minMaxButton right" onClick={e => setCartPlus(props)}>+</div>
                     </div>
           </div>
         <p className="checkout__card__description">{props.description}</p>
