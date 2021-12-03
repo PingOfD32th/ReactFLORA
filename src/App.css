@@ -109,7 +109,6 @@ body {
   border: 1px solid;
   width: 40rem;
   height: 5rem;
-
 }
 .approvals {
   position: absolute;
@@ -194,7 +193,6 @@ line-height: 1.4rem;
 .checkoutPriceData { 
   grid-area: checkoutPriceData; 
   justify-self: end;
-  
 }
 
 .checkoutTitle { grid-area: checkoutTitle; }
@@ -240,4 +238,80 @@ cursor: pointer;
 }
 .left {
   float: left
+}
+
+/* messages page */
+.messages {
+  margin: auto;
+  width: 80%;
+}
+.ordersList {
+  margin: auto;
+  width: 45rem;
+}
+.orders {
+  margin-bottom: 1rem;
+  box-shadow: 0 0 10px 5px #e1e5ee;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+.messagesImagesDiv {
+  margin-top: 1.3rem;
+	max-height: 6rem;
+}
+.messagesImage {
+	max-height: 6rem;
+}
+
+.approvalWrapper {
+  display: inline-block;
+  width: 40rem;
+  max-height: 2rem;
+  height: 1.5rem;
+  text-align: center;
+}
+.clerk {
+  display: inline-block;
+  border-radius: 1rem;
+}
+.regional {
+  display: inline-block;
+  border-radius: 1rem;
+}
+.vp {
+  display: inline-block;
+  border-radius: 1rem;
+}
+.approved {
+  height: 100%;
+  width: 33.33%;
+  background-color: rgb(40, 165, 40);
+  color: white;
+}
+.denied {
+  height: 100%;
+    width: 33.33%;
+    background-color: rgb(211, 18, 18);
+    color: white;
+}
+.waitingApproval {
+    height: 100%;
+    width: 33.33%;
+    background-color: rgb(197, 186, 38);
+}
+.messagesOrderNumber {
+  float: left;
+  top: 0px;
+  max-width: 40rem;
+  height: 0.5rem;
+}
+.messagesCloseOrder {
+  float: right;
+  top: 0rem;
+  padding-right: 0.7rem;
+}
+
+.MSDS {
+  margin: auto;
+  width: 80%;
 }

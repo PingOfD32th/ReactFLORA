@@ -66,14 +66,33 @@ class FirebaseService {
             })
         })
     }
+    updateOrderCount = (newcount) => {
+        orderCount.update({count: newcount})
+    }
     // getProduct: function() {},
     // editProduct: function() {},
     // deleteProduct: function(){},
 
-    // getOrder: function(){},
+    getActiveOrders = () => {
+        return new Promise(function(resolve, reject) {
+            orders
+            .where('orderComplete', "==", false)
+            .orderBy("ordernumber", "desc")
+            .onSnapshot((querySnapshot) => {
+                const items = []
+                querySnapshot.forEach((doc) => {
+                    let itemData = doc.data()
+                    itemData.firestoreID = doc.id
+                    items.push(itemData);
+                })
+                resolve(items)
+            })
+        })
+    }
+
     placeOrder = (data) => {
         orders.add({
-            ordernumber: newOrderCount,
+            ordernumber: data.orderNumber,
             cartItems: data.item,
             cartPrice: data.total,
             regionalApproved: false,
@@ -86,9 +105,29 @@ class FirebaseService {
             vpNotes: null,
             clerkNotes: null,
             poNumber: null,
+            orderComplete: false,
+        })
+        this.updateOrderCount(data.orderNumber)
+
+    }
+    editOrder = (data) => {
+        orders.doc(data.orderID).update({
+            regionalApproved: false,
+            regionalDenied: false,
+            vpApproved: false,
+            vpDenied: false,
+            clerkApproved: false,
+            clerkDenied: false,
+            regionalNotes: null,
+            vpNotes: null,
+            clerkNotes: null,
+            poNumber: null,
+            orderComplete: false,
         })
     }
-    // editOrder: function(){},
+    closeOrder = (id) => {
+        orders.doc(id).update({orderComplete: true})
+    }
 
     // getMessages: function() {},
 

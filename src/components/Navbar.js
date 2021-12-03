@@ -70,7 +70,6 @@ function Navbar() {
                     <span>Total: </span>
                     <span className="total-amount">{cart && cart.total.toFixed(2)}</span>
                   </div>
-                  {console.log(cart)}
                   <Link to='/checkout' className="btn animate" disabled="disabled">Checkout</Link>
                 </div>
             </div>

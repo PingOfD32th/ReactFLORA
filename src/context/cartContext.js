@@ -72,8 +72,12 @@ export const CartProvider = props => {
         setCartData({item: newData, total: subTotal, qty: cart.qty - count});
         localStorage.setItem("cart", JSON.stringify({item: newData, total: subTotal, qty: cart.qty - count}));
     }
+    const clearCart = () => {
+        setCartData({item: [], total: 0, qty: 0})
+        localStorage.setItem("cart", JSON.stringify({item: [], total: 0, qty: 0 }));
+    }
     return (
-        <CartContext.Provider value={{cart, setCart, setCartPlus, setCartMinus, removeCart}}>
+        <CartContext.Provider value={{cart, setCart, setCartPlus, setCartMinus, removeCart, clearCart}}>
             {props.children}
         </CartContext.Provider>
     );
