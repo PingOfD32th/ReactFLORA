@@ -5,6 +5,7 @@ import { CartContext } from '../context/cartContext';
 
 function Products() {
   const [firestoreData, setFirestoreData] = useState([]);  
+  const [searchTerm, setSearchTerm] = useState('');  
   useEffect(()=>{
     (async () => {
       firebase.getProducts().then(item => {
@@ -15,16 +16,20 @@ function Products() {
   
   return (
     <div>
-    <div className="seachbar_wrapper">
-        <div className="searchbar">
-          <div>
-          </div>
+      <div className="wrapper seachbar_wrapper">
+        <div>
+          <input type="text" placeholder="Search..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} /><span onClick={e => setSearchTerm('')}>X</span>
         </div>
       </div>
-      <br />
       <div className="wrapper">
         {
-          firestoreData.map(({itemName, itemPrice, itemPic}) => (
+          firestoreData.filter((val)=>{
+            if (searchTerm == '') {
+              return val;
+            } else if (val.itemName.toLowerCase().includes(searchTerm.toLowerCase())) {
+              return val;
+            }
+          }).map(({itemName, itemPrice, itemPic}) => (
             <Card
             img={itemPic}
             title={itemName}

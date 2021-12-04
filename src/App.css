@@ -241,3 +241,18 @@ cursor: pointer;
 .left {
   float: left
 }
+.seachbar_wrapper div {
+  position: relative;
+}
+.seachbar_wrapper input {
+	width: 100%;
+	font-size: 30px;
+	border-radius: 8px;
+	padding: 5px;
+}
+.seachbar_wrapper span {
+	position: absolute;
+	font-size: 35px;
+	right: 10px;
+	cursor: pointer;
+}
