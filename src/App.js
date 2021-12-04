@@ -10,6 +10,7 @@ import Messages from './pages/Messages';
 import addItem from './pages/addItem';
 import Support from './pages/support'
 import Checkout from './pages/checkout';
+import MSDS from './pages/MSDS';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path='/addItem' component={addItem} />
           <Route path='/support' component={Support} />
           <Route path='/checkout' component={Checkout} />
+          <Route path='/MSDS' component={MSDS} />
         </Switch>
       </Router>
     </CartProvider>

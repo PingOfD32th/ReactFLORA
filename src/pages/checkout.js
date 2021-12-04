@@ -1,17 +1,26 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import firebase from '../customModules/firestoreTest1';
 import { CartContext } from '../context/cartContext';
 
 function Checkout() {
-  const { cart } = useContext(CartContext)
+  const { cart, clearCart } = useContext(CartContext)
   const [inputs, setInputs] = useState({})
-  
-  const handleSubmit = (event) => {
-   event.preventDefault();
-   firebase.placeOrder(inputs)
-  }
+  const [firestoreData, setFirestoreData] = useState([]); 
+  useEffect(()=>{
+    (async () => {
+      firebase.getLastOrderNumber().then(item => {
+        setFirestoreData(item)
+        cart.orderNumber = item + 1
+      })
+    })()
+  }, [])
 
-  let itemPic, itemName, itemPrice, itemGLCode = null
+  const handleSubmit = (event) => {
+    firebase.placeOrder(cart)
+    clearCart()
+   }
+  
+
   return (
     <div className='checkout'>
       <br />
@@ -30,7 +39,7 @@ function Checkout() {
       <br />
       <div className="checkoutFooter right">
         <h2>total order amount: ${cart && cart.total.toFixed(2)}</h2>
-        <div onClick={e => firebase.placeOrder(cart)}>Confirm Order request</div>
+        <div onClick={e => handleSubmit(cart)}>Confirm Order request</div>
       </div>
       </div>
       

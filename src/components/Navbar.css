@@ -190,3 +190,11 @@ span {
 .shopping-list .shopping-list-item .remove {
   color: red;
 }
+
+/* messages page */
+.messagesImagesDiv {
+	max-height: 6rem;
+}
+.messagesImage {
+	max-height: 6rem;
+}
