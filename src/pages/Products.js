@@ -16,9 +16,8 @@ function Products() {
   return (
     <div>
     <div className="seachbar_wrapper">
-        <div className="searchbar">
-          <div>
-          </div>
+        <div className="searchbarDiv">
+          <input className="searchbar" />
         </div>
       </div>
       <br />
