@@ -90,6 +90,23 @@ class FirebaseService {
         })
     }
 
+    getPastOrders = () => {
+        return new Promise(function(resolve, reject) {
+            orders
+            .where('orderComplete', "==", false)
+            .orderBy("ordernumber", "desc")
+            .onSnapshot((querySnapshot) => {
+                const items = []
+                querySnapshot.forEach((doc) => {
+                    let itemData = doc.data()
+                    itemData.firestoreID = doc.id
+                    items.push(itemData);
+                })
+                resolve(items)
+            })
+        })
+    }
+
     placeOrder = (data) => {
         orders.add({
             ordernumber: data.orderNumber,

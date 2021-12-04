@@ -1,8 +1,7 @@
-const electron = require('electron');
+const { app, BrowserWindow } = require('electron')
 // Module to control application life.
-const app = electron.app;
+
 // Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow;
 
 const path = require('path');
 const url = require('url');
@@ -37,7 +36,9 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+app.whenReady().then(() =>{
+    createWindow()
+});
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
