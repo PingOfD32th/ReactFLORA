@@ -29,7 +29,7 @@ function Products() {
             } else if (val.itemName.toLowerCase().includes(searchTerm.toLowerCase())) {
               return val;
             }
-          }).map(({itemName, itemPrice, itemPic}) => (
+          }).map(({itemName, itemPrice, itemPic, itemGlCode}) => (
             <Card
             img={itemPic}
             title={itemName}

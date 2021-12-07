@@ -26,7 +26,6 @@ function Checkout() {
       <br />
       <div className='checkoutWrapper'>
       <div className="checkoutCardWrapper">
-      {cart.item.map(item => {console.log(item)})}
       {cart.item.map(item=>(
         <Card
           img={item.img}
@@ -39,6 +38,10 @@ function Checkout() {
       <br />
       <div className="checkoutFooter right">
         <h2>total order amount: ${cart && cart.total.toFixed(2)}</h2>
+        <div className="GLCodeTotalsWrapper right">
+          <h3>GLCode Totals:</h3>
+          <div className="GLCodeTotals"></div>
+        </div>
         <div onClick={e => handleSubmit(cart)}>Confirm Order request</div>
       </div>
       </div>
