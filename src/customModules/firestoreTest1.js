@@ -91,23 +91,31 @@ class FirebaseService {
     }
 
     placeOrder = (data) => {
-        orders.add({
-            ordernumber: data.orderNumber,
-            cartItems: data.item,
-            cartPrice: data.total,
-            regionalApproved: false,
-            regionalDenied: false,
-            vpApproved: false,
-            vpDenied: false,
-            clerkApproved: false,
-            clerkDenied: false,
-            regionalNotes: null,
-            vpNotes: null,
-            clerkNotes: null,
-            poNumber: null,
-            orderComplete: false,
-        })
-        this.updateOrderCount(data.orderNumber)
+        let orderNumber = data.orderNumber;
+        data.vendors.map((vendor, index) => {
+            let total = 0;
+            let currentItem = data.item.filter(val => val.vendor == vendor);
+            currentItem.map(val => {
+                total += val.count * val.price;
+            });
+            orders.add({
+                ordernumber: orderNumber + index,
+                cartItems: currentItem,
+                cartPrice: total,
+                regionalApproved: false,
+                regionalDenied: false,
+                vpApproved: false,
+                vpDenied: false,
+                clerkApproved: false,
+                clerkDenied: false,
+                regionalNotes: null,
+                vpNotes: null,
+                clerkNotes: null,
+                poNumber: null,
+                orderComplete: false,
+            });
+        });
+        this.updateOrderCount((orderNumber + data.vendors.length)-1)
 
     }
     editOrder = (data) => {

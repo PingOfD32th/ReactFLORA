@@ -29,11 +29,13 @@ function Products() {
             } else if (val.itemName.toLowerCase().includes(searchTerm.toLowerCase())) {
               return val;
             }
-          }).map(({itemName, itemPrice, itemPic, itemGlCode}) => (
+          }).map(({itemName, itemPrice, itemPic, itemVendor, itemGLCode}) => (
             <Card
-            img={itemPic}
-            title={itemName}
-            price={itemPrice}
+              img={itemPic}
+              title={itemName}
+              price={itemPrice}
+              vendor={itemVendor}
+              glcode={itemGLCode}
             />
           ))}
       </div>
